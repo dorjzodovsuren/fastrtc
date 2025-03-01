@@ -70,7 +70,7 @@ class KokoroTTSModel(TTSModel):
 
             chunk_idx = 0
             async for chunk in self.model.create_stream(
-                sentence, voice=options.voice, speed=options.speed, lang=options.lang
+                sentence, voice=options.voice, speed=options.speed, lang=options.lang, is_phonemes=True
             ):
                 if s_idx != 0 and chunk_idx == 0:
                     yield chunk[1], np.zeros(chunk[1] // 7, dtype=np.float32)
